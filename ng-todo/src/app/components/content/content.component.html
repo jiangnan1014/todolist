@@ -1,0 +1,35 @@
+<div id="app">
+  <div class="top">
+    <div class="header">
+      <p class="logo">ToDoList</p>
+      <input class="input" type="text" placeholder="添加ToDo" [(ngModel)]="key" (keyup.enter)="handleAdd()" />
+    </div>
+  </div>
+  <div class="box">
+    <div class="content">
+      <div class="todo">
+        <p class="task">正在进行</p>
+        <p class="count">{{list.length-sum()}}</p>
+      </div>
+      <div *ngFor="let item of list" class="list">
+        <div class="ngif" *ngIf="!item.ischecked">
+          <input class="select" type="checkbox" [(ngModel)]="item.ischecked" />
+          <p class="detail">{{item.name}}</p>
+          <input class="delete" type="button" (click) = "handleDel(item)" />
+        </div>
+      </div>
+      <div class="todo">
+        <p class="task">已经完成</p>
+        <p class="count">{{sum()}}</p>
+      </div>
+      <div *ngFor="let item of list" class="lists">
+        <div class="ngif" *ngIf="item.ischecked">
+          <input class="select" type="checkbox" [(ngModel)]="item.ischecked" />
+          <p class="detail">{{item.name}}</p>
+          <input class="delete" type="button" (click) = "handleDel(item)"/>
+        </div>
+      </div>
+    </div>
+    <p class="bottom">江南制造</p>
+  </div>
+</div>
